@@ -62,7 +62,23 @@ public class FrontServlet extends HttpServlet {
         if ("/student/list.do".equals(servletPath)) {
             processingServlet = "/student/list";
         }
-        // todo 실행할 servlet 결정하기
+        // 실행할 servlet 결정하기
+        else if("/student/view.do".equals(servletPath)) {
+            processingServlet = "/student/view";
+        }
+        else if("/student/delete.do".equals(servletPath)) {
+            processingServlet = "/student/delete";
+        }
+        else if("/student/update.do".equals(servletPath)) {
+            processingServlet = "/student/update";
+        }
+        else if("/student/register.do".equals(servletPath)) {
+            processingServlet = "/student/register";
+        }
+        else if("/error.do".equals(servletPath)) {
+            processingServlet = "/error";
+        }
+
         return processingServlet;
     }
 
