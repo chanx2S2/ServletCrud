@@ -4,12 +4,19 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 
+import java.io.IOException;
+
 public class WebApplicationListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
-        StudentRepository studentRepository = new MapStudentRepository();
+        StudentRepository studentRepository = null;
+        try {
+            studentRepository = new JsonStudentRepository();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         for(int i = 1; i <= 10; i++) {
             String id = "std" + i;
