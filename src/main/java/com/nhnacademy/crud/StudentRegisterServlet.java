@@ -24,7 +24,8 @@ public class StudentRegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // /student/register.jsp forward
         // req.getRequestDispatcher("/student/register.jsp").forward(req, resp);
-        // todo view attribute 설정 - /student/register.jsp
+        // view attribute 설정 - /student/register.jsp
+        req.setAttribute("register", "redirect:/student/register.jsp");
     }
 
     @Override
@@ -44,8 +45,7 @@ public class StudentRegisterServlet extends HttpServlet {
 
         // null check
         if(Objects.isNull(id) || Objects.isNull(name) || Objects.isNull(gender)|| Objects.isNull(age)) {
-            resp.sendRedirect("/student/register.jsp");
-            return;
+            throw new RuntimeException("id, name, gender, age 확인해주세요!");
         }
 
         // save 구현
@@ -54,7 +54,8 @@ public class StudentRegisterServlet extends HttpServlet {
 
         // redirect /student/view?id=student1
         // resp.sendRedirect("/student/view?id=" + student.getId());
-        // todo redirect view attribute 설정   resp.sendRedirect("/student/view?id="+student.getId());
+        // redirect view attribute 설정   resp.sendRedirect("/student/view?id="+student.getId());
+        req.setAttribute("view", "redirect:/student/view?id="+student.getId());
 
     }
 }

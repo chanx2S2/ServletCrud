@@ -34,7 +34,8 @@ public class StudentListServlet extends HttpServlet {
         dispatcher.forward(req, resp);
          */
 
-        // todo view attribute - /student/list.jsp
+        // view attribute - /student/list.jsp
+        req.setAttribute("list", "redirect:/student/list.jsp");
 
     }
 }
