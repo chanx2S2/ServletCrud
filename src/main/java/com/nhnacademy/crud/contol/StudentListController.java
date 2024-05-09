@@ -1,17 +1,19 @@
 package com.nhnacademy.crud.contol;
 
+import com.nhnacademy.crud.Student;
 import com.nhnacademy.crud.StudentRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class StudentDeleteController implements Command{
+import java.util.List;
+
+public class StudentListController implements Command {
 
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
         StudentRepository studentRepository = (StudentRepository) req.getServletContext().getAttribute("studentRepository");
-        String id = req.getParameter("id");
-        studentRepository.deleteById(id);
-
-        return "redirect:/student/list.do";
+        List<Student> studentList = studentRepository.getStudents();
+        req.setAttribute("studentList", studentList);
+        return "redirect:/student/list.jsp";
     }
 }

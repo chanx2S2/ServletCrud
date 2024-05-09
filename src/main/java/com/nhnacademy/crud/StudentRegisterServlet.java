@@ -45,8 +45,7 @@ public class StudentRegisterServlet extends HttpServlet {
 
         // null check
         if(Objects.isNull(id) || Objects.isNull(name) || Objects.isNull(gender)|| Objects.isNull(age)) {
-            resp.sendRedirect("/student/register.jsp");
-            return;
+            throw new RuntimeException("id, name, gender, age 확인해주세요!");
         }
 
         // save 구현
