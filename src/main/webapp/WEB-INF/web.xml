@@ -23,11 +23,11 @@
     </jsp-config>
     
     <servlet>
-        <servlet-name>studentRegisterServlet</servlet-name>
-        <servlet-class>com.nhnacademy.crud.StudentRegisterServlet</servlet-class>
+        <servlet-name>studentRegisterController</servlet-name>
+        <servlet-class>com.nhnacademy.crud.contol.StudentRegisterController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>studentRegisterServlet</servlet-name>
+        <servlet-name>studentRegisterController</servlet-name>
         <url-pattern>/student/register</url-pattern>
     </servlet-mapping>
 </web-app>
